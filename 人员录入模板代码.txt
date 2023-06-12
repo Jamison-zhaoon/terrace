@@ -1,0 +1,101 @@
+#include<iostream>
+#include <string.h> 
+using namespace std;
+
+
+class time{
+public:
+time(){};
+time(int y,int m,int d){
+year=y;
+month=m;
+dag=d;
+}
+time(time &p)
+{
+year=p.year;
+month=p.month;
+dag=p.dag;
+}
+
+void set(){
+cout<<"请输入生日"<<endl;
+cin>>year>>month>>dag;
+}
+
+void show(){
+cout<<"出身日期为:"<<year<<"年"<<month<<"月"<<dag<<"日"<<endl;
+}
+private:
+int year;
+int month;
+int dag;
+};
+
+
+class personnel{
+public:
+personnel(personnel &j)
+{ 
+code=j.code;
+strcpy(name,j.name); 
+sex=j.sex; 
+strcpy(id,j.id);
+birthday=j.birthday;
+} 
+personnel(){};
+personnel(int i,char j[10],bool x,char s[18]):birthday()
+{
+code=i;
+        strcpy(name,j);
+sex=x;
+       strcpy(id,s);
+}
+void entry(){
+cout<<"请输入编号:"<<ends;
+cin>>code;
+cout<<"请输入名字（只能是英文）"<<endl;
+cin>>name;
+cout<<"请输入性别(0男或1女):"<<ends;
+cin>>sex;
+birthday.set();
+cout<<"请输入身份证号:"<<endl;
+cin>>id;
+}
+
+
+void show(){
+cout<<"编号:"<<code<<endl;
+cout<<"名字为:"<<name<<endl;
+if(sex)
+{
+cout<<"性别:女"<<endl;
+}
+else cout<<"性别:男"<<endl;
+        birthday.show();
+cout<<"身份证:"<<id<<endl;
+}
+~personnel()
+{ 
+cout<<"第"<<code<<"号人员已经录入"<<endl; 
+}
+
+
+private:
+int code;
+char name[10];
+bool sex;
+time birthday;
+char id[18]; 
+};
+
+int main(){  
+ personnel h;
+ h.entry();
+      h.show();
+return 0;
+    
+}
+————————————————
+版权声明：本文为CSDN博主「打工杂」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/qq_41297719/article/details/78927492
